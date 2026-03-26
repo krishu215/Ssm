@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Sanwariya Marketing</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:#fff;
+}
+
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:rgba(0,0,0,0.5);
+    position:sticky;
+    top:0;
+}
+
+nav h1{
+    color:#38bdf8;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav ul li{
+    cursor:pointer;
+}
+
+nav ul li:hover{
+    color:#38bdf8;
+}
+
+/* Hero Section */
+.hero{
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    background:linear-gradient(135deg,#1e3a8a,#0f172a);
+}
+
+.hero h2{
+    font-size:50px;
+}
+
+.hero p{
+    margin-top:10px;
+    font-size:18px;
+    color:#cbd5f5;
+}
+
+.hero button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    background:#38bdf8;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.hero button:hover{
+    background:#0ea5e9;
+}
+
+/* Section */
+section{
+    padding:60px 50px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#38bdf8;
+}
+
+/* Cards */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    background:#334155;
+}
+
+/* Contact */
+.contact{
+    text-align:center;
+    line-height:2;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
+    margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <h1>SSM</h1>
+    <ul>
+        <li onclick="scrollToSection('about')">About</li>
+        <li onclick="scrollToSection('services')">Services</li>
+        <li onclick="scrollToSection('contact')">Contact</li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Shree Sanwariya Marketing</h2>
+    <p>Innovative Ideas. Impactful Marketing. Guaranteed Results.</p>
+    <button onclick="scrollToSection('contact')">Get Started</button>
+</div>
+
+<!-- About -->
+<section id="about">
+    <h2>💡 Our Qualities</h2>
+    <div class="grid">
+        <div class="card">Creative Thinking – Unique campaigns that stand out.</div>
+        <div class="card">Client-First Approach – Your growth is our priority.</div>
+        <div class="card">Proven Results – We deliver measurable outcomes.</div>
+        <div class="card">Affordable & Effective – Maximum impact, minimum cost.</div>
+        <div class="card">Experienced Team – Experts with hands-on knowledge.</div>
+    </div>
+</section>
+
+<!-- Why Choose -->
+<section>
+    <h2>❓ Why Choose SSM?</h2>
+    <div class="grid">
+        <div class="card">Deep understanding of local markets.</div>
+        <div class="card">Innovative offline + online strategies.</div>
+        <div class="card">Focus on long-term brand growth.</div>
+        <div class="card">Complete marketing from idea to execution.</div>
+    </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+    <h2>📋 Our Services</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Offline Marketing</h3>
+            <p>Bottle label ads, street promotions, branded merchandise.</p>
+        </div>
+        <div class="card">
+            <h3>Digital Marketing</h3>
+            <p>Social media, graphic design, SEO, Google My Business.</p>
+        </div>
+        <div class="card">
+            <h3>Influencer Marketing</h3>
+            <p>Collaborations with local & niche influencers.</p>
+        </div>
+        <div class="card">
+            <h3>Coaching Marketing</h3>
+            <p>JEE, NEET targeted campaigns & student attraction.</p>
+        </div>
+        <div class="card">
+            <h3>Custom Campaigns</h3>
+            <p>Fully tailored strategies for your brand.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Highlight -->
+<section>
+    <h2>🚀 Why We’re the Best</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+        At SSM, we don’t just market — we create unforgettable brand presence.
+        Our unique strategies like water bottle branding, influencer tie-ups,
+        and targeted promotions help your business reach thousands at low cost.
+    </p>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+    <h2>📞 Contact Us</h2>
+    <p>📍 Indore, Madhya Pradesh</p>
+    <p>📱 +91 9399289433</p>
+    <p>✉️ tiroletarun19@gmail.com</p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 Shree Sanwariya Marketing | All Rights Reserved</p>
+</footer>
+
+<script>
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({
+        behavior:'smooth'
+    });
+}
+</script>
+
+</body>
+</html>
