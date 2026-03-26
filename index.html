@@ -3,128 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shree Sanwariya Marketing</title>
+<title>SSM Marketing</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#0f172a;
+    background:#0a0a0a;
     color:#fff;
 }
 
-/* Navbar */
+/* NAVBAR */
 nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px 50px;
-    background:rgba(0,0,0,0.5);
-    position:sticky;
-    top:0;
+    padding:20px 60px;
+    background:#000;
+    border-bottom:1px solid #333;
 }
 
 nav h1{
-    color:#38bdf8;
+    color:#d4af37;
 }
 
 nav ul{
     display:flex;
+    gap:30px;
     list-style:none;
-    gap:25px;
 }
 
 nav ul li{
     cursor:pointer;
+    transition:0.3s;
 }
 
 nav ul li:hover{
-    color:#38bdf8;
+    color:#d4af37;
 }
 
-/* Hero Section */
+/* HERO */
 .hero{
-    height:90vh;
+    height:100vh;
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
-    flex-direction:column;
-    text-align:center;
-    background:linear-gradient(135deg,#1e3a8a,#0f172a);
+    padding:0 60px;
+}
+
+.hero-text{
+    max-width:600px;
 }
 
 .hero h2{
-    font-size:50px;
+    font-size:60px;
+}
+
+.hero span{
+    color:#d4af37;
 }
 
 .hero p{
-    margin-top:10px;
-    font-size:18px;
-    color:#cbd5f5;
+    margin-top:15px;
+    color:#aaa;
 }
 
-.hero button{
+.btn{
     margin-top:20px;
-    padding:12px 25px;
-    border:none;
-    background:#38bdf8;
+    padding:12px 28px;
+    background:#d4af37;
     color:#000;
-    font-weight:bold;
+    border:none;
     cursor:pointer;
     border-radius:5px;
+    font-weight:bold;
 }
 
-.hero button:hover{
-    background:#0ea5e9;
+.btn:hover{
+    background:#b8962e;
 }
 
-/* Section */
+/* SECTIONS */
 section{
-    padding:60px 50px;
+    padding:80px 60px;
 }
 
 h2{
     text-align:center;
-    margin-bottom:30px;
-    color:#38bdf8;
+    color:#d4af37;
+    margin-bottom:50px;
 }
 
-/* Cards */
+/* GRID */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    gap:25px;
 }
 
+/* CARD */
 .card{
-    background:#1e293b;
-    padding:20px;
-    border-radius:10px;
-    transition:0.3s;
+    background:#111;
+    padding:30px;
+    border-radius:15px;
+    border:1px solid #222;
+    transition:0.4s;
 }
 
 .card:hover{
-    transform:translateY(-5px);
-    background:#334155;
+    transform:translateY(-10px);
+    border-color:#d4af37;
 }
 
-/* Contact */
-.contact{
+/* FEATURE STRIP */
+.feature{
+    display:flex;
+    justify-content:space-around;
     text-align:center;
-    line-height:2;
+    gap:20px;
 }
 
-/* Footer */
+.feature div{
+    background:#111;
+    padding:25px;
+    border-radius:10px;
+    border:1px solid #222;
+}
+
+/* CONTACT */
+form{
+    max-width:500px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input,textarea{
+    padding:12px;
+    border:none;
+    border-radius:5px;
+}
+
 footer{
     text-align:center;
     padding:20px;
-    background:#020617;
-    margin-top:20px;
+    background:#000;
+}
+
+/* WHATSAPP */
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    padding:15px;
+    border-radius:50%;
+    text-decoration:none;
+}
+
+/* ANIMATION */
+.fade{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+.show{
+    opacity:1;
+    transform:translateY(0);
 }
 </style>
 
@@ -132,103 +183,102 @@ footer{
 
 <body>
 
-<!-- Navbar -->
+<!-- NAV -->
 <nav>
     <h1>SSM</h1>
     <ul>
-        <li onclick="scrollToSection('about')">About</li>
-        <li onclick="scrollToSection('services')">Services</li>
-        <li onclick="scrollToSection('contact')">Contact</li>
+        <li onclick="go('about')">About</li>
+        <li onclick="go('services')">Services</li>
+        <li onclick="go('contact')">Contact</li>
     </ul>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <div class="hero">
-    <h2>Shree Sanwariya Marketing</h2>
-    <p>Innovative Ideas. Impactful Marketing. Guaranteed Results.</p>
-    <button onclick="scrollToSection('contact')">Get Started</button>
+    <div class="hero-text">
+        <h2><span>Luxury Marketing</span><br>That Delivers Results</h2>
+        <p>Innovative Ideas. Powerful Branding. Guaranteed Growth.</p>
+        <button class="btn" onclick="go('contact')">Start Now</button>
+    </div>
 </div>
 
-<!-- About -->
+<!-- FEATURES -->
+<section>
+<div class="feature">
+<div>🚀 Fast Growth</div>
+<div>💡 Creative Ideas</div>
+<div>📈 High ROI</div>
+</div>
+</section>
+
+<!-- ABOUT -->
 <section id="about">
-    <h2>💡 Our Qualities</h2>
-    <div class="grid">
-        <div class="card">Creative Thinking – Unique campaigns that stand out.</div>
-        <div class="card">Client-First Approach – Your growth is our priority.</div>
-        <div class="card">Proven Results – We deliver measurable outcomes.</div>
-        <div class="card">Affordable & Effective – Maximum impact, minimum cost.</div>
-        <div class="card">Experienced Team – Experts with hands-on knowledge.</div>
-    </div>
+<h2>Our Qualities</h2>
+<div class="grid">
+<div class="card fade">Creative Thinking</div>
+<div class="card fade">Client First Approach</div>
+<div class="card fade">Proven Results</div>
+<div class="card fade">Affordable Marketing</div>
+<div class="card fade">Expert Team</div>
+</div>
 </section>
 
-<!-- Why Choose -->
-<section>
-    <h2>❓ Why Choose SSM?</h2>
-    <div class="grid">
-        <div class="card">Deep understanding of local markets.</div>
-        <div class="card">Innovative offline + online strategies.</div>
-        <div class="card">Focus on long-term brand growth.</div>
-        <div class="card">Complete marketing from idea to execution.</div>
-    </div>
-</section>
-
-<!-- Services -->
+<!-- SERVICES -->
 <section id="services">
-    <h2>📋 Our Services</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Offline Marketing</h3>
-            <p>Bottle label ads, street promotions, branded merchandise.</p>
-        </div>
-        <div class="card">
-            <h3>Digital Marketing</h3>
-            <p>Social media, graphic design, SEO, Google My Business.</p>
-        </div>
-        <div class="card">
-            <h3>Influencer Marketing</h3>
-            <p>Collaborations with local & niche influencers.</p>
-        </div>
-        <div class="card">
-            <h3>Coaching Marketing</h3>
-            <p>JEE, NEET targeted campaigns & student attraction.</p>
-        </div>
-        <div class="card">
-            <h3>Custom Campaigns</h3>
-            <p>Fully tailored strategies for your brand.</p>
-        </div>
-    </div>
+<h2>Our Services</h2>
+<div class="grid">
+<div class="card fade"><h3>Offline Marketing</h3></div>
+<div class="card fade"><h3>Digital Marketing</h3></div>
+<div class="card fade"><h3>Influencer Marketing</h3></div>
+<div class="card fade"><h3>Coaching Marketing</h3></div>
+<div class="card fade"><h3>Custom Campaigns</h3></div>
+</div>
 </section>
 
-<!-- Highlight -->
-<section>
-    <h2>🚀 Why We’re the Best</h2>
-    <p style="text-align:center; max-width:800px; margin:auto;">
-        At SSM, we don’t just market — we create unforgettable brand presence.
-        Our unique strategies like water bottle branding, influencer tie-ups,
-        and targeted promotions help your business reach thousands at low cost.
-    </p>
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact Us</h2>
+
+<form onsubmit="sendMsg(event)">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="4" placeholder="Message"></textarea>
+<button class="btn">Send</button>
+</form>
+
+<p style="text-align:center;margin-top:20px;">
+📍 Indore, MP <br>
+📱 +91 9399289433 <br>
+✉️ tiroletarun19@gmail.com
+</p>
+
 </section>
 
-<!-- Contact -->
-<section id="contact" class="contact">
-    <h2>📞 Contact Us</h2>
-    <p>📍 Indore, Madhya Pradesh</p>
-    <p>📱 +91 9399289433</p>
-    <p>✉️ tiroletarun19@gmail.com</p>
-</section>
-
-<!-- Footer -->
 <footer>
-    <p>© 2026 Shree Sanwariya Marketing | All Rights Reserved</p>
+<p>© 2026 SSM Marketing</p>
 </footer>
 
+<a class="whatsapp" href="https://wa.me/919399289433">💬</a>
+
 <script>
-function scrollToSection(id){
-    document.getElementById(id).scrollIntoView({
-        behavior:'smooth'
-    });
+function go(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+let items=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+items.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
+
+function sendMsg(e){
+e.preventDefault();
+alert("Message Sent!");
 }
 </script>
 
 </body>
-</html>
+    </html>
