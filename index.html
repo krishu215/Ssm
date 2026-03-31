@@ -3,1089 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shree Sawariya Marketing</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Krishna Namdev | Web Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lora&display=swap" rel="stylesheet">
+
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+  --black:#0c0c0c;
+  --gold:#d4af37;
+  --light:#f5f5f5;
+}
 
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C96A;
-    --gold-pale: #F5E6B8;
-    --black: #0A0A0A;
-    --dark: #111111;
-    --mid: #1A1A1A;
-    --surface: #161616;
-    --cream: #F0E8D8;
-    --muted: #888880;
-    --white: #FAFAF5;
-  }
+body{
+  margin:0;
+  font-family:'Lora', serif;
+  background:var(--black);
+  color:var(--light);
+  overflow-x:hidden;
+}
 
-  html { scroll-behavior: smooth; }
+/* Navbar /
+nav{
+  position:fixed;
+  width:100%;
+  background:#000;
+  padding:15px 10%;
+  display:flex;
+  justify-content:space-between;
+  z-index:1000;
+}
+nav a{color:white; margin-left:20px; text-decoration:none;}
+nav a:hover{color:var(--gold);}
 
-  body {
-    background: var(--black);
-    color: var(--cream);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
+/ Hero /
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
 
-  /* ── Noise Overlay ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 10000;
-    opacity: 0.4;
-  }
+.glow-text{
+  font-size:60px;
+  text-shadow:0 0 20px #d4af37;
+  animation:glow 2s infinite alternate;
+}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    padding: 28px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background 0.4s ease, padding 0.4s ease;
-  }
-  nav.scrolled { background: rgba(10,10,10,0.92); backdrop-filter: blur(16px); padding: 18px 60px; border-bottom: 1px solid rgba(201,168,76,0.1); }
+@keyframes glow{
+  from{ text-shadow:0 0 10px #d4af37;}
+  to{ text-shadow:0 0 40px #d4af37;}
+}
 
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-  .nav-logo span { color: var(--cream); font-weight: 300; }
+/ Anime /
+.anime{
+  position:absolute;
+  bottom:0;
+  right:5%;
+  height:350px;
+  animation:float 4s ease-in-out infinite;
+}
 
-  .nav-links { display: flex; gap: 48px; list-style: none; }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    transition: color 0.3s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.3s ease;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-links a:hover::after { width: 100%; }
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-20px);}
+  100%{transform:translateY(0);}
+}
 
-  .nav-cta {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 10px 28px;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .nav-cta:hover { background: var(--gold); color: var(--black); }
+/ Sections /
+section{padding:80px 10%;}
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding: 0 60px;
-    overflow: hidden;
-  }
+.skill, .project{
+  background:#151515;
+  padding:20px;
+  margin:10px 0;
+  border-left:3px solid var(--gold);
+  transition:0.3s;
+}
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
-  }
+.skill:hover, .project:hover{
+  transform:scale(1.05);
+}
 
-  .hero-lines {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-  }
-  .hero-lines::before, .hero-lines::after {
-    content: '';
-    position: absolute;
-    border: 1px solid rgba(201,168,76,0.07);
-    border-radius: 50%;
-  }
-  .hero-lines::before { width: 800px; height: 800px; top: -200px; right: -100px; }
-  .hero-lines::after { width: 500px; height: 500px; bottom: -100px; left: 30%; }
+/ Button /
+.btn{
+  padding:12px 25px;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  text-decoration:none;
+  margin-top:20px;
+  display:inline-block;
+}
+.btn:hover{
+  background:var(--gold);
+  color:black;
+}
 
-  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+/ Cursor /
+.cursor{
+  position:fixed;
+  width:20px;
+  height:20px;
+  border:2px solid gold;
+  border-radius:50%;
+  pointer-events:none;
+}
 
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
-  }
-  .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
-  .hero-tag span {
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .hero-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(62px, 8vw, 120px);
-    font-weight: 300;
-    line-height: 0.95;
-    color: var(--white);
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.9s ease 0.4s forwards;
-  }
-  .hero-headline .gold { color: var(--gold); font-style: italic; }
-  .hero-headline .line2 { display: block; padding-left: 120px; }
-
-  .hero-sub {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 480px;
-    margin: 36px 0 56px;
-    opacity: 0;
-    animation: fadeUp 0.9s ease 0.6s forwards;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    opacity: 0;
-    animation: fadeUp 0.9s ease 0.8s forwards;
-  }
-
-  .btn-primary {
-    background: var(--gold);
-    color: var(--black);
-    padding: 18px 48px;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    transition: all 0.3s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-  .btn-ghost {
-    color: var(--cream);
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: color 0.3s, gap 0.3s;
-  }
-  .btn-ghost::after { content: '→'; font-size: 16px; }
-  .btn-ghost:hover { color: var(--gold); gap: 18px; }
-
-  .hero-number {
-    position: absolute;
-    right: 60px;
-    bottom: 60px;
-    writing-mode: vertical-rl;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: rgba(201,168,76,0.3);
-    text-transform: uppercase;
-    opacity: 0;
-    animation: fadeIn 1.2s ease 1.2s forwards;
-  }
-
-  .scroll-indicator {
-    position: absolute;
-    left: 60px;
-    bottom: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    opacity: 0;
-    animation: fadeIn 1.2s ease 1.2s forwards;
-  }
-  .scroll-line {
-    width: 1px;
-    height: 60px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollLine 2s ease-in-out infinite;
-  }
-  .scroll-indicator span { font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; writing-mode: vertical-rl; }
-
-  @keyframes scrollLine { 0%,100%{opacity:0.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-
-  /* ── STATS ── */
-  .stats-bar {
-    background: var(--surface);
-    border-top: 1px solid rgba(201,168,76,0.15);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-    padding: 48px 60px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: linear-gradient(rgba(201,168,76,0.15), rgba(201,168,76,0.15));
-  }
-  .stat-item {
-    background: var(--black);
-    padding: 40px 48px;
-    text-align: center;
-    transition: background 0.3s;
-  }
-  .stat-item:hover { background: var(--surface); }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-    display: block;
-  }
-  .stat-label { font-size: 11px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-top: 8px; display: block; }
-
-  /* ── SECTION BASE ── */
-  section { padding: 120px 60px; }
-
-  .section-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .section-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-  .section-tag span { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 5vw, 70px);
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--white);
-  }
-  .section-title em { font-style: italic; color: var(--gold); }
-
-  /* ── QUALITIES ── */
-  #qualities { background: var(--black); }
-
-  .qualities-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-top: 80px;
-    border: 1px solid rgba(201,168,76,0.1);
-  }
-
-  .quality-card {
-    padding: 56px 60px;
-    border-right: 1px solid rgba(201,168,76,0.1);
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.4s;
-  }
-  .quality-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 0;
-    background: var(--gold);
-    transition: height 0.4s ease;
-  }
-  .quality-card:hover { background: var(--surface); }
-  .quality-card:hover::before { height: 100%; }
-
-  .quality-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 72px;
-    font-weight: 300;
-    color: rgba(201,168,76,0.08);
-    line-height: 1;
-    position: absolute;
-    top: 20px; right: 32px;
-    transition: color 0.4s;
-  }
-  .quality-card:hover .quality-num { color: rgba(201,168,76,0.15); }
-
-  .quality-icon { font-size: 28px; margin-bottom: 20px; display: block; }
-
-  .quality-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 600;
-    color: var(--cream);
-    margin-bottom: 14px;
-  }
-  .quality-desc { font-size: 14px; color: var(--muted); line-height: 1.8; }
-
-  /* ── SERVICES ── */
-  #services {
-    background: var(--surface);
-    position: relative;
-  }
-  #services::before {
-    content: 'SM';
-    position: absolute;
-    right: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 280px;
-    font-weight: 700;
-    color: rgba(201,168,76,0.03);
-    pointer-events: none;
-    user-select: none;
-    letter-spacing: -0.05em;
-  }
-
-  .services-layout {
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 100px;
-    margin-top: 80px;
-  }
-
-  .services-nav { position: sticky; top: 120px; align-self: start; }
-  .service-tab {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(201,168,76,0.08);
-    cursor: none;
-    transition: all 0.3s;
-    position: relative;
-  }
-  .service-tab::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: width 0.3s;
-  }
-  .service-tab.active::after { width: 40px; }
-  .service-tab.active .tab-num { color: var(--gold); }
-  .service-tab.active .tab-name { color: var(--white); }
-  .tab-num { font-size: 11px; letter-spacing: 0.2em; color: rgba(201,168,76,0.3); font-family: 'Cormorant Garamond', serif; font-size: 18px; min-width: 30px; }
-  .tab-name { font-size: 14px; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; transition: color 0.3s; }
-
-  .services-content { position: relative; }
-  .service-panel { display: none; opacity: 0; transition: opacity 0.4s; }
-  .service-panel.active { display: block; opacity: 1; }
-
-  .service-panel-head {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 32px;
-  }
-  .service-panel-desc {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.9;
-    margin-bottom: 48px;
-    max-width: 560px;
-  }
-  .service-features { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-  .service-features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    font-size: 14px;
-    color: var(--cream);
-    line-height: 1.6;
-  }
-  .service-features li::before {
-    content: '';
-    width: 20px;
-    height: 1px;
-    background: var(--gold);
-    margin-top: 12px;
-    flex-shrink: 0;
-  }
-
-  .service-visual {
-    margin-top: 56px;
-    padding: 40px;
-    border: 1px solid rgba(201,168,76,0.1);
-    background: rgba(201,168,76,0.02);
-    font-size: 64px;
-    text-align: center;
-    letter-spacing: 16px;
-  }
-
-  /* ── WHY US ── */
-  #why {
-    background: var(--black);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .why-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 120px;
-    align-items: center;
-    margin-top: 80px;
-  }
-
-  .why-visual {
-    position: relative;
-    height: 500px;
-  }
-  .why-orb {
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
-  }
-  .why-orb-1 { width: 380px; height: 380px; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: pulse 4s ease-in-out infinite; }
-  .why-orb-2 { width: 240px; height: 240px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(201,168,76,0.2) 0%, transparent 70%); animation: pulse 4s ease-in-out 1s infinite; }
-
-  @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.6} 50%{transform:translate(-50%,-50%) scale(1.08);opacity:1} }
-
-  .why-center-text {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 2;
-  }
-  .why-center-text .big { font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 300; color: var(--gold); display: block; line-height: 1; }
-  .why-center-text .small { font-size: 10px; letter-spacing: 0.4em; color: var(--muted); text-transform: uppercase; }
-
-  .why-rings {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ring {
-    position: absolute;
-    border: 1px solid rgba(201,168,76,0.12);
-    border-radius: 50%;
-  }
-  .ring:nth-child(1) { width: 420px; height: 420px; animation: rotate 20s linear infinite; }
-  .ring:nth-child(2) { width: 300px; height: 300px; animation: rotate 15s linear infinite reverse; border-style: dashed; }
-  .ring::after { content: '◆'; position: absolute; top: -6px; left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--gold); }
-
-  @keyframes rotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-
-  .why-points { display: flex; flex-direction: column; gap: 0; }
-  .why-point {
-    padding: 32px 0;
-    border-bottom: 1px solid rgba(201,168,76,0.08);
-    display: flex;
-    gap: 28px;
-    align-items: flex-start;
-    transition: padding-left 0.3s;
-  }
-  .why-point:hover { padding-left: 12px; }
-  .why-point-icon { font-size: 20px; margin-top: 2px; flex-shrink: 0; }
-  .why-point-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--cream); margin-bottom: 6px; }
-  .why-point-text p { font-size: 13px; color: var(--muted); line-height: 1.7; }
-
-  /* ── MARQUEE ── */
-  .marquee-section {
-    padding: 40px 0;
-    border-top: 1px solid rgba(201,168,76,0.1);
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    background: var(--surface);
-    overflow: hidden;
-  }
-  .marquee-track {
-    display: flex;
-    gap: 80px;
-    animation: marquee 20s linear infinite;
-    white-space: nowrap;
-  }
-  .marquee-item {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 300;
-    color: var(--muted);
-    flex-shrink: 0;
-    letter-spacing: 0.05em;
-  }
-  .marquee-item .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
-  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-  /* ── CONTACT ── */
-  #contact { background: var(--black); }
-
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 120px;
-    margin-top: 80px;
-    align-items: start;
-  }
-
-  .contact-info { display: flex; flex-direction: column; gap: 0; }
-  .contact-item {
-    padding: 36px 0;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    display: flex;
-    gap: 28px;
-    align-items: flex-start;
-  }
-  .contact-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-  .contact-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-  .contact-value { font-size: 16px; color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 20px; }
-  .contact-value a { color: var(--cream); text-decoration: none; transition: color 0.3s; }
-  .contact-value a:hover { color: var(--gold); }
-
-  .contact-form { display: flex; flex-direction: column; gap: 0; }
-  .form-row { border-bottom: 1px solid rgba(201,168,76,0.15); position: relative; margin-bottom: 4px; }
-  .form-row label { display: block; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; padding-top: 28px; }
-  .form-row input, .form-row textarea, .form-row select {
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--cream);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-    padding-bottom: 20px;
-    resize: none;
-  }
-  .form-row select { appearance: none; }
-  .form-row select option { background: var(--dark); }
-  .form-row textarea { min-height: 100px; }
-  .form-row::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.4s;
-  }
-  .form-row:focus-within::after { width: 100%; }
-  .form-row:focus-within label { color: var(--gold-light); }
-
-  .form-submit {
-    margin-top: 48px;
-    background: var(--gold);
-    color: var(--black);
-    border: none;
-    padding: 20px 60px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: all 0.3s;
-    align-self: flex-start;
-  }
-  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--surface);
-    padding: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(201,168,76,0.1);
-  }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--gold); letter-spacing: 0.1em; }
-  .footer-logo span { color: var(--muted); font-weight: 300; font-size: 16px; display: block; letter-spacing: 0.2em; margin-top: 4px; }
-  .footer-mid { text-align: center; font-size: 12px; color: var(--muted); letter-spacing: 0.1em; }
-  .footer-mid p { margin-bottom: 4px; }
-  .footer-right { text-align: right; font-size: 11px; color: rgba(136,136,128,0.5); letter-spacing: 0.1em; }
-
-  /* ── REVEAL ANIMATIONS ── */
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.revealed { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-
-  /* ── MOBILE ── */
-  @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    nav.scrolled { padding: 14px 24px; }
-    .nav-links { display: none; }
-    section { padding: 80px 24px; }
-    #hero { padding: 0 24px; }
-    .hero-headline { font-size: 52px; }
-    .hero-headline .line2 { padding-left: 0; }
-    .stats-bar { grid-template-columns: repeat(2,1fr); padding: 0; }
-    .stat-item { padding: 28px 20px; }
-    .qualities-grid { grid-template-columns: 1fr; }
-    .services-layout { grid-template-columns: 1fr; gap: 48px; }
-    .services-nav { position: static; display: flex; overflow-x: auto; gap: 0; flex-direction: row; border-bottom: 1px solid rgba(201,168,76,0.1); padding-bottom: 0; }
-    .service-tab { padding: 16px 20px; border-bottom: none; border-right: 1px solid rgba(201,168,76,0.1); white-space: nowrap; }
-    .why-layout { grid-template-columns: 1fr; gap: 60px; }
-    .why-visual { height: 300px; }
-    .contact-layout { grid-template-columns: 1fr; gap: 60px; }
-    footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
-    .footer-right { text-align: center; }
-    .scroll-indicator { display: none; }
-    .hero-number { display: none; }
-  }
 </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav id="mainNav">
-  <div class="nav-logo">Shree <span>Sawariya Marketing</span></div>
-  <ul class="nav-links">
-    <li><a href="#qualities">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+<div class="cursor"></div>
+
+<nav>
+  <div>Krishna</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-lines"></div>
-
-  <div class="hero-content">
-    <div class="hero-tag"><span>Indore's Premier Marketing Agency</span></div>
-
-    <h1 class="hero-headline">
-      Innovative<br>
-      <em class="gold">Ideas.</em>
-      <span class="line2">Impactful Results.</span>
-    </h1>
-
-    <p class="hero-sub">
-      Shree Sawariya Marketing transforms brands through creative offline & digital campaigns, influencer partnerships, and hyper-local strategies — guaranteed to grow your reach.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Start Your Campaign</a>
-      <a href="#services" class="btn-ghost">Explore Services</a>
-    </div>
+<section class="hero">
+  <div>
+    <h1 class="glow-text">Krishna Namdev</h1>
+    <p>Web Developer 🚀 | Tech Expert 💻</p>
+    <a href="#projects" class="btn">View Work</a>
   </div>
 
-  <div class="scroll-indicator">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-
-  <div class="hero-number">Est. Indore, M.P. &nbsp;◆&nbsp; Shree Sawariya Marketing</div>
+  <!-- Anime Character -->
+  <img src="https://i.ibb.co/2q7Q9Yp/anime-boy.png" class="anime">
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item reveal">
-    <span class="stat-num" data-count="500">0</span>
-    <span class="stat-label">Brands Served</span>
-  </div>
-  <div class="stat-item reveal reveal-delay-1">
-    <span class="stat-num" data-count="50">0</span>
-    <span class="stat-label">Influencer Network</span>
-  </div>
-  <div class="stat-item reveal reveal-delay-2">
-    <span class="stat-num" data-count="100">0</span>
-    <span class="stat-label">Campaigns Executed</span>
-  </div>
-  <div class="stat-item reveal reveal-delay-3">
-    <span class="stat-num" data-count="98">0</span>
-    <span class="stat-label">Client Satisfaction %</span>
-  </div>
-</div>
-
-<!-- QUALITIES -->
-<section id="qualities">
-  <div class="section-tag reveal"><span>Our Core DNA</span></div>
-  <h2 class="section-title reveal reveal-delay-1">Why <em>Shree Sawariya</em> Stands<br>Apart from the Rest</h2>
-
-  <div class="qualities-grid">
-    <div class="quality-card reveal">
-      <span class="quality-num">01</span>
-      <span class="quality-icon">💡</span>
-      <div class="quality-name">Creative Thinking</div>
-      <div class="quality-desc">We design unique campaigns that break through noise — not generic ads, but memorable brand experiences that people talk about.</div>
-    </div>
-    <div class="quality-card reveal reveal-delay-1">
-      <span class="quality-num">02</span>
-      <span class="quality-icon">🤝</span>
-      <div class="quality-name">Client-First Approach</div>
-      <div class="quality-desc">Your growth is our priority. We align every strategy with your specific business goals, audience, and budget — always.</div>
-    </div>
-    <div class="quality-card reveal reveal-delay-2">
-      <span class="quality-num">03</span>
-      <span class="quality-icon">📊</span>
-      <div class="quality-name">Proven Results</div>
-      <div class="quality-desc">We deliver measurable outcomes. Real numbers, real growth — not vanity metrics. Every campaign is tracked and optimized.</div>
-    </div>
-    <div class="quality-card reveal reveal-delay-3">
-      <span class="quality-num">04</span>
-      <span class="quality-icon">💰</span>
-      <div class="quality-name">Affordable & Effective</div>
-      <div class="quality-desc">Maximum impact at minimum cost. We know how to make every rupee count through smart planning and local expertise.</div>
-    </div>
-    <div class="quality-card reveal">
-      <span class="quality-num">05</span>
-      <span class="quality-icon">🏆</span>
-      <div class="quality-name">Experienced Team</div>
-      <div class="quality-desc">Marketing experts with real hands-on knowledge of Madhya Pradesh markets, consumer behavior, and what actually works.</div>
-    </div>
-    <div class="quality-card reveal reveal-delay-1" style="background: linear-gradient(135deg, rgba(201,168,76,0.06), transparent); border: none; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px;">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:rgba(201,168,76,0.2); line-height:1.2; text-align:center;">Shree<br>Sawariya<br>Marketing</div>
-      <div style="font-size:11px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Est. Indore, M.P.</div>
-    </div>
-  </div>
+<section id="about" data-aos="fade-up">
+  <h2>About Me</h2>
+  <p>I build modern, fast and business-focused websites.</p>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <div class="marquee-item"><span class="dot"></span> Creative Marketing</div>
-    <div class="marquee-item"><span class="dot"></span> Influencer Campaigns</div>
-    <div class="marquee-item"><span class="dot"></span> Institute Promotions</div>
-    <div class="marquee-item"><span class="dot"></span> Bottle Label Branding</div>
-    <div class="marquee-item"><span class="dot"></span> Social Media Growth</div>
-    <div class="marquee-item"><span class="dot"></span> Local SEO</div>
-    <div class="marquee-item"><span class="dot"></span> Event Marketing</div>
-    <div class="marquee-item"><span class="dot"></span> Brand Building</div>
-    <div class="marquee-item"><span class="dot"></span> Creative Marketing</div>
-    <div class="marquee-item"><span class="dot"></span> Influencer Campaigns</div>
-    <div class="marquee-item"><span class="dot"></span> Institute Promotions</div>
-    <div class="marquee-item"><span class="dot"></span> Bottle Label Branding</div>
-    <div class="marquee-item"><span class="dot"></span> Social Media Growth</div>
-    <div class="marquee-item"><span class="dot"></span> Local SEO</div>
-    <div class="marquee-item"><span class="dot"></span> Event Marketing</div>
-    <div class="marquee-item"><span class="dot"></span> Brand Building</div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-tag reveal"><span>What We Offer</span></div>
-  <h2 class="section-title reveal reveal-delay-1">Services Crafted<br>for <em>Real Impact</em></h2>
-
-  <div class="services-layout reveal">
-    <div class="services-nav">
-      <div class="service-tab active" data-panel="offline">
-        <span class="tab-num">01</span>
-        <span class="tab-name">Offline Marketing</span>
-      </div>
-      <div class="service-tab" data-panel="digital">
-        <span class="tab-num">02</span>
-        <span class="tab-name">Digital Marketing</span>
-      </div>
-      <div class="service-tab" data-panel="influencer">
-        <span class="tab-num">03</span>
-        <span class="tab-name">Influencer Marketing</span>
-      </div>
-      <div class="service-tab" data-panel="institute">
-        <span class="tab-num">04</span>
-        <span class="tab-name">Institute Marketing</span>
-      </div>
-      <div class="service-tab" data-panel="custom">
-        <span class="tab-num">05</span>
-        <span class="tab-name">Custom Campaigns</span>
-      </div>
-    </div>
-
-    <div class="services-content">
-      <div class="service-panel active" id="panel-offline">
-        <div class="service-panel-head">Creative Offline<br>Marketing</div>
-        <div class="service-panel-desc">We bring your brand to the streets and events of Indore through creative, high-visibility offline campaigns that leave lasting impressions on your target audience.</div>
-        <ul class="service-features">
-          <li>Unique water bottle label advertising — your brand in thousands of hands daily</li>
-          <li>Street & event promotions with high foot-traffic targeting</li>
-          <li>Branded merchandise distribution to build brand recall</li>
-          <li>Banner & standee campaigns at strategic locations</li>
-        </ul>
-        <div class="service-visual">🏷️ 🎪 🎁 📦</div>
-      </div>
-
-      <div class="service-panel" id="panel-digital">
-        <div class="service-panel-head">Digital Marketing<br>Solutions</div>
-        <div class="service-panel-desc">Comprehensive digital presence management — from social media to search rankings. We ensure your brand is found, followed, and trusted online.</div>
-        <ul class="service-features">
-          <li>Social media campaigns across Instagram, Facebook & WhatsApp</li>
-          <li>Professional graphic design & content creation</li>
-          <li>Local SEO & Google My Business optimization</li>
-          <li>Targeted paid ad campaigns with ROI tracking</li>
-        </ul>
-        <div class="service-visual">📱 🎨 🔍 📈</div>
-      </div>
-
-      <div class="service-panel" id="panel-influencer">
-        <div class="service-panel-head">Influencer<br>Marketing</div>
-        <div class="service-panel-desc">We connect your brand with the right local and niche influencers who carry genuine trust with your exact target audience. Authentic promotions that convert.</div>
-        <ul class="service-features">
-          <li>Network of 50+ local Indore-based influencers</li>
-          <li>Niche influencer matching for your specific industry</li>
-          <li>Authentic content creation and endorsement campaigns</li>
-          <li>Performance tracking and reach analytics</li>
-        </ul>
-        <div class="service-visual">🌟 📸 🤳 💫</div>
-      </div>
-
-      <div class="service-panel" id="panel-institute">
-        <div class="service-panel-head">Coaching Institute<br>Marketing</div>
-        <div class="service-panel-desc">Specialized marketing packages designed specifically for coaching institutes — attract more students and build a trusted reputation in competitive exam preparation.</div>
-        <ul class="service-features">
-          <li>Targeted campaigns for JEE, NEET & competitive exam centers</li>
-          <li>Bottle label & banner branding near schools and colleges</li>
-          <li>Digital ads targeting students and parents specifically</li>
-          <li>Result season promotions for maximum enrollment impact</li>
-        </ul>
-        <div class="service-visual">📚 🎓 🏫 ✏️</div>
-      </div>
-
-      <div class="service-panel" id="panel-custom">
-        <div class="service-panel-head">Customized<br>Campaigns</div>
-        <div class="service-panel-desc">No two brands are the same. We build fully tailored campaigns — from concept to execution — that perfectly match your brand identity, goals, and budget.</div>
-        <ul class="service-features">
-          <li>Deep brand audit and strategy development</li>
-          <li>Multi-channel campaign planning and coordination</li>
-          <li>End-to-end execution with dedicated project management</li>
-          <li>Post-campaign analysis and performance reporting</li>
-        </ul>
-        <div class="service-visual">🎯 🗺️ ⚙️ 🚀</div>
-      </div>
-    </div>
-  </div>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skill" data-aos="zoom-in">HTML CSS</div>
+  <div class="skill" data-aos="zoom-in">Java</div>
+  <div class="skill" data-aos="zoom-in">Python</div>
 </section>
 
-<!-- WHY US -->
-<section id="why">
-  <div class="section-tag reveal"><span>Our Difference</span></div>
-  <h2 class="section-title reveal reveal-delay-1">We Don't Just Market.<br>We <em>Build Empires.</em></h2>
-
-  <div class="why-layout">
-    <div class="why-visual reveal">
-      <div class="why-rings">
-        <div class="ring"></div>
-        <div class="ring"></div>
-      </div>
-      <div class="why-orb why-orb-1"></div>
-      <div class="why-orb why-orb-2"></div>
-      <div class="why-center-text">
-        <span class="big" style="font-size:42px; letter-spacing:0.02em;">Shree<br>Sawariya</span>
-        <span class="small">Marketing Excellence</span>
-      </div>
-    </div>
-
-    <div class="why-points">
-      <div class="why-point reveal">
-        <span class="why-point-icon">🎯</span>
-        <div class="why-point-text">
-          <h4>Deep Local Knowledge</h4>
-          <p>We understand Indore's markets, cultures, and audiences better than anyone. Your campaigns hit exactly the right people.</p>
-        </div>
-      </div>
-      <div class="why-point reveal reveal-delay-1">
-        <span class="why-point-icon">🔄</span>
-        <div class="why-point-text">
-          <h4>Innovation + Offline Strategy</h4>
-          <p>Our unique bottle-label branding and event promotions put your name in thousands of hands daily at a fraction of traditional costs.</p>
-        </div>
-      </div>
-      <div class="why-point reveal reveal-delay-2">
-        <span class="why-point-icon">📈</span>
-        <div class="why-point-text">
-          <h4>Long-Term Brand Building</h4>
-          <p>We focus on lasting brand equity, not just quick promotions. Your reputation grows stronger with every campaign we run.</p>
-        </div>
-      </div>
-      <div class="why-point reveal reveal-delay-3">
-        <span class="why-point-icon">⚡</span>
-        <div class="why-point-text">
-          <h4>Idea to Execution — Stress Free</h4>
-          <p>We handle everything. You share your goal; we take care of the strategy, creative, execution, and reporting entirely.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project" data-aos="fade-right">E-commerce Website</div>
+  <div class="project" data-aos="fade-left">Portfolio Website</div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-tag reveal"><span>Get In Touch</span></div>
-  <h2 class="section-title reveal reveal-delay-1">Ready to Grow<br>Your <em>Brand?</em></h2>
-
-  <div class="contact-layout">
-    <div class="contact-info">
-      <div class="contact-item reveal">
-        <span class="contact-icon">📍</span>
-        <div>
-          <div class="contact-label">Location</div>
-          <div class="contact-value">Indore, Madhya Pradesh</div>
-        </div>
-      </div>
-      <div class="contact-item reveal reveal-delay-1">
-        <span class="contact-icon">📱</span>
-        <div>
-          <div class="contact-label">Phone / WhatsApp</div>
-          <div class="contact-value"><a href="tel:+919399289433">+91 93992 89433</a></div>
-        </div>
-      </div>
-      <div class="contact-item reveal reveal-delay-2">
-        <span class="contact-icon">✉️</span>
-        <div>
-          <div class="contact-label">Email Address</div>
-          <div class="contact-value"><a href="mailto:tiroletarun19@gmail.com">tiroletarun19@gmail.com</a></div>
-        </div>
-      </div>
-      <div class="contact-item reveal reveal-delay-3">
-        <span class="contact-icon">🕐</span>
-        <div>
-          <div class="contact-label">Working Hours</div>
-          <div class="contact-value">Mon – Sat, 9 AM – 7 PM</div>
-        </div>
-      </div>
-
-      <div style="margin-top: 48px; padding: 40px; border: 1px solid rgba(201,168,76,0.15); background: linear-gradient(135deg, rgba(201,168,76,0.04), transparent);" class="reveal">
-        <div style="font-family:'Cormorant Garamond',serif; font-size: 22px; color: var(--gold); margin-bottom: 12px; font-style: italic;">
-          "Innovation + Cost-Effectiveness + Local Expertise"
-        </div>
-        <div style="font-size: 13px; color: var(--muted); line-height: 1.8;">
-          The Shree Sawariya Marketing formula for giving your brand the competitive edge it deserves. We reach thousands without heavy spending.
-        </div>
-      </div>
-    </div>
-
-    <div class="contact-form reveal reveal-delay-2">
-      <div class="form-row">
-        <label>Your Name</label>
-        <input type="text" placeholder="Enter your full name" />
-      </div>
-      <div class="form-row">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="+91 XXXXX XXXXX" />
-      </div>
-      <div class="form-row">
-        <label>Email Address</label>
-        <input type="email" placeholder="your@email.com" />
-      </div>
-      <div class="form-row">
-        <label>Service Interested In</label>
-        <select>
-          <option value="" disabled selected>Choose a service</option>
-          <option>Offline Marketing</option>
-          <option>Digital Marketing</option>
-          <option>Influencer Marketing</option>
-          <option>Coaching Institute Marketing</option>
-          <option>Custom Campaign</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label>Your Message</label>
-        <textarea placeholder="Tell us about your brand and marketing goals..."></textarea>
-      </div>
-      <button class="form-submit" onclick="handleSubmit(event)">Send Message →</button>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">Shree Sawariya <span>Marketing</span></div>
-  <div class="footer-mid">
-    <p>Innovative Ideas. Impactful Marketing. Guaranteed Results.</p>
-    <p style="margin-top:8px; font-size:10px; color:rgba(136,136,128,0.4);">© 2025 Shree Sawariya Marketing. All rights reserved.</p>
-  </div>
-  <div class="footer-right">
-    Indore, Madhya Pradesh<br>
-    <a href="tel:+919399289433" style="color:var(--gold); text-decoration:none;">+91 93992 89433</a>
-  </div>
-</footer>
-
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-  // ── Nav scroll ──
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
+AOS.init();
 
-  // ── Reveal on scroll ──
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ── Counter animation ──
-  const counters = document.querySelectorAll('[data-count]');
-  const countObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const target = +el.dataset.count;
-      const suffix = target === 98 ? '%' : (target === 500 ? '+' : '+');
-      let current = 0;
-      const step = target / 60;
-      const timer = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.textContent = Math.floor(current) + suffix;
-        if (current >= target) clearInterval(timer);
-      }, 20);
-      countObs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => countObs.observe(c));
-
-  // ── Service tabs ──
-  document.querySelectorAll('.service-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      const panel = document.getElementById('panel-' + tab.dataset.panel);
-      if (panel) { panel.classList.add('active'); panel.style.opacity = 0; setTimeout(() => panel.style.opacity = 1, 10); }
-    });
-  });
-
-  // ── Form submit ──
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target;
-    btn.textContent = '✓ Message Sent!';
-    btn.style.background = '#2A5A2A';
-    btn.style.color = '#7FBF7F';
-    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; btn.style.color = ''; }, 3000);
-  }
+/ Cursor */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.top=e.clientY+"px";
+cursor.style.left=e.clientX+"px";
+});
 </script>
+
 </body>
 </html>
